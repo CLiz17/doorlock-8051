@@ -1,0 +1,57 @@
+;addition
+MOV A,#FFH
+MOV B,#01H
+ADD A,B
+MOV DPTR,#4200
+MOVX @DPTR,A ;sum
+JNC 10
+INC DPTR ;carry
+MOV A,#01H
+MOVX @DPTR,A
+SJMP 10
+
+;similarly subtraction SUBB A,B
+
+;multiplication
+MOV A,#22H
+MOV B,#11H
+MUL AB
+MOV DPTR,#4200
+MOVX @DPTR,A ;moved lower bit to 4200
+INC DPTR
+MOV A,B
+MOVX @DPTR,A ;moved higher bit to 4201
+SJMP 23
+
+;division
+MOV A,#22H
+MOV B,#11H
+DIV AB
+MOV DPTR,#4200
+MOVX @DPTR,A ;stored qoutient at 4200
+INC DPTR
+MOV A,B
+MOVX @DPTR,A ;stored reminder at 4201
+SJMP 34
+
+;16-bit addition
+MOV DPTR,#4200
+MOVX A,@DPTR
+MOV B,A
+INC DPTR
+INC DPTR
+MOVX A,@DPTR
+ADD A,B
+MOV R0,A
+DEC DPL
+MOVX A,@DPTR
+MOV B,A
+INC DPTR
+INC DPTR
+MOVX A,@DPTR
+ADDC A,B
+MOV R1,A
+JNC 57
+MOV A,#01H
+MOV R2,A
+SJMP 57
