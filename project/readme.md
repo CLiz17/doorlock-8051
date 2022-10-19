@@ -1,12 +1,12 @@
 # SIMULATION
 
 ### START
-![start](img-start.png)
+<img src="img-start.png" height="300" width="500">
 <br/>
 
 ### WHILE ENTERING CORRECT PASSSWORD
-![start](img-open.png)
+<img src="img-open.png" height="300" width="500">
 <br/>
 
 ### WHILE ENTERING WRONG PASSWORD
-![start](img-wrong.png)
+<img src="img-wrong.png" height="300" width="500">
